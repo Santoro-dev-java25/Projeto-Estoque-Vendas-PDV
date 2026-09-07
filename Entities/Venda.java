@@ -13,6 +13,7 @@ public class Venda {
     private LocalDate data;
     private FormaPagamento formaPagamento;
     private StatusVenda statusVenda;
+    private Cliente cliente;
     private double total;
 
     public Venda(FormaPagamento formaPagamento){
@@ -37,6 +38,10 @@ public class Venda {
             total += item.getSubtotal();
         }
         return total;
+    }
+
+    public void associarCliente(Cliente cliente){
+     this.cliente = cliente;
     }
 
     public List<ItemVenda> getItens() {
