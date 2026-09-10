@@ -6,6 +6,8 @@ import ESTUDOSJAVA.Project_EstoqueVendas.Exceptions.ValorInvalidoException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Estoque {
 
@@ -16,8 +18,13 @@ public class Estoque {
 
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public void listarProdutos(){
+        if(produtos.isEmpty()){
+            System.out.println("Nennhum produto cadastrado!");
+        }
+        for(Produto p : produtos){
+            System.out.println("Codigo: "+ p.getCodigo() + " | Nome: "+ p.getNome() + " | Preco: "+ p.getPreco() + " | Estoque: "+ p.getQuantidadeEstoque());
+        }
     }
 
     public void cadastrarProduto(Produto p){
@@ -46,6 +53,8 @@ public class Estoque {
             else{
                    throw new EstoqueInsuficienteException("Estoque insuficiente");
             }
+
+        }
     }
-}
+
 
